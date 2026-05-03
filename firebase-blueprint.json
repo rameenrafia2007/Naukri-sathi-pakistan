@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "Profile": {
+      "title": "Profile",
+      "description": "User profile containing basic information, skills mapping, and job preferences.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The unique user ID" },
+        "profession": { "type": "string" },
+        "experienceYears": { "type": "number" },
+        "skillsDescription": { "type": "string" },
+        "educationLevel": { "type": "string" },
+        "languages": { "type": "array", "items": { "type": "string" } },
+        "city": { "type": "string" },
+        "goals": { "type": "array", "items": { "type": "string" } },
+        "salaryExpectation": { "type": "number" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "profession", "createdAt"]
+    },
+    "Result": {
+      "title": "Result",
+      "description": "AI-generated results for the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "careerScore": { "type": "number" },
+        "formalTitle": { "type": "string" },
+        "urduTitle": { "type": "string" },
+        "strengths": { "type": "array", "items": { "type": "string" } },
+        "improvements": { "type": "array", "items": { "type": "string" } },
+        "skillTags": { "type": "array", "items": { "type": "string" } },
+        "cvData": {
+          "type": "object",
+          "properties": {
+            "objective": { "type": "string" },
+            "skills": { "type": "object" },
+            "experience": { "type": "array" }
+          }
+        },
+        "jobMatches": { "type": "array" },
+        "interviewQuestions": { "type": "array" },
+        "salaryNegotiationScript": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "createdAt"]
+    },
+    "Metric": {
+      "title": "Metric",
+      "description": "System usage metrics for global tracking",
+      "type": "object",
+      "properties": {
+        "profilesCreated": { "type": "number" },
+        "cvsDownloaded": { "type": "number" },
+        "jobsViewed": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "profiles/{userId}": {
+      "schema": { "$ref": "#/entities/Profile" },
+      "description": "User profiles. Owned and edited by the user."
+    },
+    "results/{userId}": {
+      "schema": { "$ref": "#/entities/Result" },
+      "description": "AI-generated results for a user."
+    },
+    "metrics/global": {
+      "schema": { "$ref": "#/entities/Metric" },
+      "description": "Global usage metrics."
+    }
+  }
+}

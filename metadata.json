@@ -1,0 +1,8 @@
+{
+  "name": "Naukri Saathi",
+  "description": "Pakistan's first AI-powered career transformation platform for informal economy workers.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0F172A;
+  --color-electric-blue: #3B82F6;
+  --color-gold: #F59E0B;
+  --color-glass: rgba(15, 23, 42, 0.6);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-urdu: "Noto Nastaliq Urdu", serif;
+}
+
+body {
+  background-color: var(--color-navy);
+  color: #F8FAFC;
+  font-family: var(--font-sans);
+}
+
+/* Fix 7: Global Font Consistency */
+[lang="en"], .english-text {
+  font-family: var(--font-sans) !important;
+}
+
+[lang="ur"], .urdu-text {
+  font-family: var(--font-urdu) !important;
+}
+
+html[lang="ur"] .urdu-text {
+  /* Fix vertical alignment for Urdu */
+  line-height: 2.2 !important;
+}
+
+/* Ensure all buttons and inputs inherit correct fonts */
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+@media (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  .card, [class*="rounded"] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  h1 { font-size: 1.875rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  p { font-size: 0.875rem !important; }
+
+  .glass-card {
+    padding: 16px !important;
+  }
+
+  button {
+    min-height: 48px !important;
+  }
+}
+
+button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  cursor: pointer;
+  line-height: 1 !important;
+}
+
+button .urdu-text, button.urdu-text {
+  line-height: 1.2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.cta-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bg-gradient-navy {
+  background: linear-gradient(180deg, #020617 0%, #0F172A 100%);
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+}
+
+/* Particle grid background */
+.bg-grid-pattern {
+  background-image: radial-gradient(#3B82F6 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
